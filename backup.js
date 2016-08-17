@@ -32,7 +32,6 @@ for (i = 0; i < instances.length; i++) {
         }
         else {
             console.log(data.ImageId.toString() + ' created from ' + instanceId);
-            sleep.sleep(60);
 
             console.log('working on deleting old ami images (' + deleteDateString + '_' + instanceId + ')')
 
