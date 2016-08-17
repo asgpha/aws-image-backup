@@ -18,3 +18,5 @@ npm install
 node backup.js --instances ami-2231221312321,ami-12321321 --days 10
 ```
 
+
+Business Cloud Consulting | Big Data | Atlas Software Group <http://atlassoftwaregroup.com>
