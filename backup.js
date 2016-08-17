@@ -7,11 +7,16 @@ program
     .version('0.1')
     .option('-i, --instances [value]', 'Comma seperate list of instances')
     .option('-d, --days [value]', 'Retention days')
+    .option('-r --region [value]', 'AWS Region', 'us-east-1')
     .parse(process.argv);
 
 var todayString = moment().format('YYYYMMDD')
 var deleteDateString = moment().subtract(parseInt(program.days), 'days').format('YYYYMMDD');
 var instances = program.instances.split(',').map(function (t) { return t.trim(); });
+
+
+AWS.config.update({region: program.region});
+
 
 var ec2 = new AWS.EC2();
 
