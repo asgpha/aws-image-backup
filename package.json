@@ -1,0 +1,14 @@
+{
+  "name": "aws_image_backup",
+  "description": "Creates AMI backup",
+  "dependencies": {
+    "aws-sdk": "^2.5.1",
+    "commander": "^2.9.0",
+    "moment": "^2.14.1",
+    "sqlite3": "^3.1.4"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "sleep": "^3.0.1"
+  }
+}
