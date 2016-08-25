@@ -31,6 +31,7 @@ for (i = 0; i < instances.length; i++) {
     }, function (err, data) {
         if (err) {
             console.log(err, err.stack);
+            process.exit(1);
         }
         else {
             console.log(data.ImageId.toString() + ' created from ' + instanceId);
@@ -49,6 +50,7 @@ for (i = 0; i < instances.length; i++) {
             }, function (err, data) {
                 if (err) {
                     console.log(err, err.stack);
+                    process.exit(1);
                 }
                 else {
                     var images = data.Images;
@@ -63,6 +65,7 @@ for (i = 0; i < instances.length; i++) {
                         }, function (err, data) {
                             if (err) {
                                 console.log(err, err.stack);
+                                process.exit(1);
                             }
                             else {
                                 console.log(deleteDateString + '_' + instanceId + ' has been deregistered');
@@ -80,6 +83,7 @@ for (i = 0; i < instances.length; i++) {
                                 }, function (err, data) {
                                     if (err) {
                                         console.log(err, err.stack);
+                                        process.exit(1);
                                     }
                                     else {
                                         var snapshots = data.Snapshots;
@@ -92,6 +96,7 @@ for (i = 0; i < instances.length; i++) {
                                             }, function (err, data) {
                                                 if (err) {
                                                     console.log(err, err.stack);
+                                                    process.exit(1);
                                                 }
                                                 else {
                                                     console.log(snapshot.SnapshotId + ' has been deleted');
