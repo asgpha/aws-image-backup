@@ -8,7 +8,7 @@ program
     .option('-i, --instances [value]', 'Comma seperate list of instances')
     .option('-d, --days [value]', 'Retention days')
     .option('-r --region [value]', 'AWS Region', 'us-east-1')
-    .option('-nb --no-reboot', 'No reboot on create image')
+    .option('--noreboot', 'No reboot on create image')
     .parse(process.argv);
 
 var todayString = moment().format('YYYYMMDD')
@@ -27,7 +27,7 @@ for (i = 0; i < instances.length; i++) {
     ec2.createImage({
         InstanceId: instanceId,
         Name: todayString + '_' + instanceId,
-        NoReboot: program.noReboot
+        NoReboot: program.noreboot
     }, function (err, data) {
         if (err) {
             console.log(err, err.stack);
