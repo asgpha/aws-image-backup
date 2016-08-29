@@ -23,14 +23,13 @@ AWS.config.update({region: program.region});
 var ec2 = new AWS.EC2();
 
 for (i = 0; i < instances.length; i++) { 
-    var instanceId = instances[i];
-
     ec2.describeInstances({
         InstanceIds: [
-            instanceId,
+            instances[i],
         ]
     }, function (err, data) {
         var description;
+        var instanceId;
 
         if (data.Reservations && data.Reservations.length > 0) {
             if (data.Reservations[0].Instances.length > 0) {
@@ -38,6 +37,11 @@ for (i = 0; i < instances.length; i++) {
                 var nameTag =  _.find(tags, {Key: 'Name'});
 
                 description = JSON.stringify(nameTag);
+                instanceId = data.Reservations[0].Instances[0].InstanceId;
+            }
+            else {
+                console.log(instanceId + ' doesn\'t exist');
+                process.exit(1);
             }
         }
         else {
